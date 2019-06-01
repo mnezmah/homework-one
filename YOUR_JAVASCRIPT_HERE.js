@@ -1,112 +1,107 @@
 // Write your JS here
 let hero = {
-  name: '',
+  name: 'SuperHero',
   heroic: true,
   inventory: [],
   health: 10,
   weapon: {
-    type: '',
+    type: 'Dagger',
     damage: 2
   }
 };
 
+displayStats();
 //prompt for hero name
-let promptHero = prompt('Welcome to Super Hero game. please enter the name of your hero');
+let promptHero = prompt('Welcome to Super Hero game. Please enter the name of your hero');
 if (promptHero != null) {
   document.getElementById("name").innerHTML =
-  "Hello " + promptHero + "! ";
+    "Hello " + promptHero + "! ";
 }
 
-//Images array
-let images = [
-  {
-    name: 'dagger',
-    src: './img/dagger.png',
-    id: 'dagger'
-  },
-  {
-    name: 'inn',
-    src: './img/inn.svg',
-    id: 'inn'
-  },
-  {
-    name: 'bag',
-    src: './img/bag.svg',
-    id: 'bag'
-  },
-]
-
-images.forEach(image => {
-  const imageContainer = document.getElementById('imageContainer');
-  const imageItem = document.createElement('img');
-  imageContainer.appendChild(imageItem);
-  imageItem.alt = image.name;
-  imageItem.src = image.src;
-  imageItem.id = image.id;
-  imageItem.style.bottom = `${getRandomInt(0, 30)}rem`;
-  imageItem.style.left = `${getRandomInt(0, 30)}rem`;
-})
 
 
 //Rest function
-function rest(someHero) {
-  someHero = { health: NaN}
+function rest(hero) {
 
-  if (someHero.health === 10) {
+  if (hero.health == 10) {
     alert('Your health is at level 10 ')
   } else {
-    return someHero.health = 10;
+    hero.health = 10;
+    return hero;
   }
-  const inn = document.getElementById('inn');
-  inn.onclick = function(){
-    return hero.health = 10}
 };
-
 
 //Picking things function
-function pickUpItem(someHero, someWeapon) {
-  someHero = {}
-  someHero.inventory = []
-  someWeapon = {}
-  const dagger = document.getElementById('dagger');
-  dagger.onclick = someHero.inventory.push({
-    type: 'dagger',
-    damage: 2
-  })
+function pickUpItem(hero, item) {
+  hero.inventory.push(item);
+  return hero;
+  displayStats();
 };
-
 
 //Equipping with weapon function
-function equipWeapon(someHero) {
-  someHero = {}
-  someHero.inventory = []
-  const bag = document.getElementById('bag')
-  bag.onclick = someHero.inventory.unshift(
-    {
-      type: 'bag',
-    }
-  )
+function equipWeapon(hero) {
+  if (hero.inventory.length > 0) {
+    hero.weapon = hero.inventory[0];
+    return hero;
+    displayStats();
+  }
 };
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+
+//moving the hero
+let Player = function (x, y) {
+  this.x = x;
+  this.y = y;
+  const myHero = document.getElementById('myHero');
+  myHero.x
+}
+
+Player.prototype.handleInput = function (keyPress) {
+  if (keyPress == 'left') {
+    this.x -= 101;
+  }
+  if (keyPress == 'up') {
+    this.y -= 83;
+  }
+  if (keyPress == 'down') {
+    this.y += 83;
+  }
 };
 
-//carving the hero
+const player = new Player(202, 400);
 
+document.addEventListener('keyup', function(e) {
+  const allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
+});
 
-
+// player.handleInput(allowedKeys[e.keyCode])
 
 
 function displayStats() {
-  const stats = document.getElementById('stats');
-  const name = stats.appendChild('h2');
-  const health = stats.appendChild('h4');
-  const weaponType = stats.appendChild('h4');
-  const weaponDamage = stats.appendChild('h4');
+  //new elememts
+  const stats = document.querySelector('#stats');
+  console.log(stats)
+  const name = document.createElement('h3');
+  const health = document.createElement('p');
+  const weaponType = document.createElement('p');
+  const weaponDamage = document.createElement('p');
+  //appending children
+  stats.appendChild(name);
+  stats.appendChild(health);
+  stats.appendChild(weaponType);
+  stats.appendChild(weaponDamage);
+
+  //asigning values to children
   name.innerHTML = `${hero.name}`;
+  name.id = 'name';
   health.innerHTML = `Your health is at level: ${hero.health}`;
-  weaponType.innerHTML = `Your weapon of choice is : ${hero.health}`;
-  weaponDamage.innerHTML = `Level of your weapon daage is : ${hero.health}`; 
+  weaponType.innerHTML = `Your weapon of choice is : ${hero.weapon.type}`;
+  weaponDamage.innerHTML = `Level of your weapon damage is : ${hero.weapon.damage}`;
 }
-displayStats();
+
+
