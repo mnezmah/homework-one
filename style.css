@@ -1,12 +1,12 @@
 body {
-  background: url(./img/background.jpg);
+  /* background: url(./img/background.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 #dagger, #bag, #inn {
   width: 40px;
-  position: absolute;
+  cursor: pointer;
 }
 
 #myHero {
@@ -16,5 +16,5 @@ body {
 
 }
 #name {
-  color: white;
+  /* color: white; */
 }
