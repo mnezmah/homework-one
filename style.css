@@ -4,6 +4,17 @@ body {
   background-repeat: no-repeat;
 }
 
-#dagger, #bag {
-  width: 50px;
+#dagger, #bag, #inn {
+  width: 40px;
+  position: absolute;
+}
+
+#myHero {
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+
+}
+#name {
+  color: white;
 }
