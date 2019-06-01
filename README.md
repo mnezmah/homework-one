@@ -1,5 +1,10 @@
 # Beginner Bootcamp Homework
 
+## My notes
+* This is honest try to create a moving game. It didn't work out as I imagined (there is no movement :)
+But I've done a lot of trials and errors, had fun and learned a lot in the process. I guess that is the main purpose of homework assignments. 
+
+
 Hello beginner bootcampers. Here is your first formal homework  assignment!
 
 
