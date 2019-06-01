@@ -8,11 +8,14 @@ let hero = {
     type: '',
     damage: 2
   }
+};
+
+
+let promptHero = prompt('Welcome to Super Hero game. please enter the name of your hero');
+if (promptHero != null) {
+  document.getElementById("name").innerHTML =
+  "Hello " + promptHero + "! ";
 }
-
-const prompt = prompt('Welcome to Super Hero game. please enter the name of your hero');
-const promptInput = document.querySelector('prompt').value;
-
 
 //functions
 function rest(someHero) {
@@ -53,12 +56,12 @@ function equipWeapon(someHero) {
 
 
 function displayStats() {
-  const stats = docuement.getElementById('stats');
+  const stats = document.getElementById('stats');
   const name = stats.appendChild('h2');
   const health = stats.appendChild('h4');
   const weaponType = stats.appendChild('h4');
   const weaponDamage = stats.appendChild('h4');
-  name.innerHTML = promptInput;
+  name.innerHTML = `${hero.name}`;
   health.innerHTML = `Your health is at level: ${hero.health}`;
   weaponType.innerHTML = `Your weapon of choice is : ${hero.health}`;
   weaponDamage.innerHTML = `Level of your weapon daage is : ${hero.health}`; 
