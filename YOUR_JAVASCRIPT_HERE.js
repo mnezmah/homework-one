@@ -10,14 +10,45 @@ let hero = {
   }
 };
 
-
+//prompt for hero name
 let promptHero = prompt('Welcome to Super Hero game. please enter the name of your hero');
 if (promptHero != null) {
   document.getElementById("name").innerHTML =
   "Hello " + promptHero + "! ";
 }
 
-//functions
+//Images array
+let images = [
+  {
+    name: 'dagger',
+    src: './img/dagger.png',
+    id: 'dagger'
+  },
+  {
+    name: 'inn',
+    src: './img/inn.svg',
+    id: 'inn'
+  },
+  {
+    name: 'bag',
+    src: './img/bag.svg',
+    id: 'bag'
+  },
+]
+
+images.forEach(image => {
+  const imageContainer = document.getElementById('imageContainer');
+  const imageItem = document.createElement('img');
+  imageContainer.appendChild(imageItem);
+  imageItem.alt = image.name;
+  imageItem.src = image.src;
+  imageItem.id = image.id;
+  imageItem.style.bottom = `${getRandomInt(0, 30)}rem`;
+  imageItem.style.left = `${getRandomInt(0, 30)}rem`;
+})
+
+
+//Rest function
 function rest(someHero) {
   someHero = { health: NaN}
 
@@ -31,6 +62,8 @@ function rest(someHero) {
     return hero.health = 10}
 };
 
+
+//Picking things function
 function pickUpItem(someHero, someWeapon) {
   someHero = {}
   someHero.inventory = []
@@ -42,6 +75,8 @@ function pickUpItem(someHero, someWeapon) {
   })
 };
 
+
+//Equipping with weapon function
 function equipWeapon(someHero) {
   someHero = {}
   someHero.inventory = []
@@ -52,6 +87,14 @@ function equipWeapon(someHero) {
     }
   )
 };
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+//carving the hero
+
+
 
 
 
