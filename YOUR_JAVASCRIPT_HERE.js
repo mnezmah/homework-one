@@ -10,34 +10,57 @@ let hero = {
   }
 }
 
+const prompt = prompt('Welcome to Super Hero game. please enter the name of your hero');
+const promptInput = document.querySelector('prompt').value;
+
 
 //functions
-function rest({}) {
-  if (hero.health === 10) {
+function rest(someHero) {
+  someHero = { health: NaN}
+
+  if (someHero.health === 10) {
     alert('Your health is at level 10 ')
   } else {
-    return {}.health = 10;
+    return someHero.health = 10;
   }
   const inn = document.getElementById('inn');
-inn.onclick = hero.health = 10
+  inn.onclick = function(){
+    return hero.health = 10}
 };
 
-function pickUpItem({}, {}) {
+function pickUpItem(someHero, someWeapon) {
+  someHero = {}
+  someHero.inventory = []
+  someWeapon = {}
   const dagger = document.getElementById('dagger');
-dagger.onclick = hero.inventory.push({
-  type: 'dagger',
-  damage: 2
-})
+  dagger.onclick = someHero.inventory.push({
+    type: 'dagger',
+    damage: 2
+  })
 };
 
-function equipWeapon() {
+function equipWeapon(someHero) {
+  someHero = {}
+  someHero.inventory = []
   const bag = document.getElementById('bag')
-  bag.onclick = hero.inventory.unshift(
+  bag.onclick = someHero.inventory.unshift(
     {
       type: 'bag',
     }
   )
-  };
+};
 
 
 
+function displayStats() {
+  const stats = docuement.getElementById('stats');
+  const name = stats.appendChild('h2');
+  const health = stats.appendChild('h4');
+  const weaponType = stats.appendChild('h4');
+  const weaponDamage = stats.appendChild('h4');
+  name.innerHTML = promptInput;
+  health.innerHTML = `Your health is at level: ${hero.health}`;
+  weaponType.innerHTML = `Your weapon of choice is : ${hero.health}`;
+  weaponDamage.innerHTML = `Level of your weapon daage is : ${hero.health}`; 
+}
+displayStats();
