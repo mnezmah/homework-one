@@ -1,5 +1,5 @@
 body {
-  /* background: url(./img/background.jpg); */
+  background: url(./img/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -13,8 +13,7 @@ body {
   height: 150px;
   position: absolute;
   bottom: 0;
-
 }
-#name {
-  /* color: white; */
+p {
+  line-height: 0.3;
 }
